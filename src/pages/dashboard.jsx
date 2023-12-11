@@ -1,9 +1,12 @@
-import { useSession } from 'next-auth/react';
+'use client'
+
+import { useSession } from "next-auth/react";
+
 
 const dashboard = () => {
     const { data: session, status } = useSession();
 
-    console.log(session);
+    console.log(session, status);
 
     return (
         <div>
@@ -13,4 +16,4 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default dashboard;

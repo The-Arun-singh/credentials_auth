@@ -16,12 +16,21 @@ const login = () => {
 
     const loginUser = async (e) => {
         e.preventDefault();
-        signIn("credentials", {
-            ...data,
-            redirect: false,
-        });
+        try {
+            const res = await signIn("credentials", {
+                ...data,
+                redirect: false,
+            });
+            console.log(res);
+            if (res.ok) {
+                router.push("/dashboard");
+            } else {
+                console.error(res.error);
+            }
+        } catch (error) {
+            console.error(error);
+        }
 
-        router.push('/dashboard');
     }
 
     return (
